@@ -1,2 +1,2 @@
-# leamikk
+# Leamikk
 Layered audio mixer
