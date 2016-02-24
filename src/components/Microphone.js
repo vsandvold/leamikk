@@ -1,17 +1,12 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 
-export default class Microphone extends Component {
-  render() {
-    const { onConnectMicrophoneClicked } = this.props
-
-    return (
-      <div>
-        <button onClick={onConnectMicrophoneClicked}>Connect</button>
-      </div>
-    )
-  }
-}
+const Microphone = ({ onConnectMicrophoneClicked }) => (
+  <button onClick={onConnectMicrophoneClicked}
+    className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Connect</button>
+)
 
 Microphone.propTypes = {
-  onConnectMicrophoneClicked: PropTypes.func
+  onConnectMicrophoneClicked: PropTypes.func.isRequired
 }
+
+export default Microphone

@@ -18,6 +18,7 @@
   "homepage": "http://musikkteknologen.no",
   "dependencies": {
     "babel-polyfill": "^6.3.14",
+    "material-design-icons": "^2.2.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.2.1",

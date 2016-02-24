@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
-import MicrophoneContainer from './MicrophoneContainer'
+import TransportContainer from './TransportContainer'
 import { resetErrorMessage } from '../actions'
 
 class App extends Component {
@@ -41,9 +41,34 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <MicrophoneContainer />
-        {this.renderErrorMessage()}
+      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
+        <header className='mdl-layout__header mdl-color--grey-900'>
+          <div className='mdl-layout-icon'></div>
+          <div className='mdl-layout__header-row'>
+            <span className='mdl-layout__title mdl-layout--large-screen-only'>Leamikk</span>
+            <div className='mdl-layout-spacer'></div>
+          </div>
+        </header>
+        <div className='mdl-layout__drawer'>
+          <span className='mdl-layout__title'>Leamikk</span>
+          <nav className='mdl-navigation'>
+            <a className='mdl-navigation__link' href='/'>Mixer</a>
+            <a className='mdl-navigation__link' href='/settings'>Settings</a>
+            <a className='mdl-navigation__link' href='/help'>Help</a>
+          </nav>
+        </div>
+        <main className='mdl-layout__content' style={{backgroundColor: '#303030'}}>
+          <div className='mdl-grid'>
+            <div className='mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-cell--stretch'>
+            </div>
+            <div className='mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-cell--bottom mdl-grid mdl-grid--no-spacing'>
+              <div className='mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone'>
+                <TransportContainer />
+              </div>
+            </div>
+          </div>
+          {this.renderErrorMessage()}
+        </main>
       </div>
     )
   }
