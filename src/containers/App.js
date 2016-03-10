@@ -1,10 +1,14 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
+import React, { PropTypes } from 'react'
 import { browserHistory } from 'react-router'
-import TransportContainer from './TransportContainer'
-import { resetErrorMessage } from '../actions'
+import { connect } from 'react-redux'
 
-class App extends Component {
+import { resetErrorMessage } from '../actions'
+import TrackerContainer from '../components/Tracker/TrackerContainer'
+import TransportContainer from '../components/Transport/TransportContainer'
+import ScrubberContainer from '../components/Scrubber/ScrubberContainer'
+import MixerContainer from '../components/Mixer/MixerContainer'
+
+class App extends React.Component {
 
   constructor(props) {
     super(props)
@@ -60,11 +64,12 @@ class App extends Component {
         <main className='mdl-layout__content' style={{backgroundColor: '#303030'}}>
           <div className='mdl-grid'>
             <div className='mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-cell--stretch'>
+              <TrackerContainer />
             </div>
             <div className='mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-cell--bottom mdl-grid mdl-grid--no-spacing'>
-              <div className='mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone'>
-                <TransportContainer />
-              </div>
+              <TransportContainer />
+              <ScrubberContainer />
+              <MixerContainer />
             </div>
           </div>
           {this.renderErrorMessage()}
@@ -75,7 +80,6 @@ class App extends Component {
 }
 
 App.propTypes = {
-  // Injected by React Redux
   errorMessage: PropTypes.string,
   resetErrorMessage: PropTypes.func.isRequired,
 }
@@ -86,6 +90,7 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-export default connect(mapStateToProps, {
-  resetErrorMessage
-})(App)
+export default connect(
+  mapStateToProps,
+  { resetErrorMessage }
+)(App)

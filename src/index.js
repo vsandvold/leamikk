@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import Root from './containers/Root'
 import configureStore from './store/configureStore'
-import { getAudioContext } from './actions/MixerActions'
+import { getAudioContext } from './components/Mixer/MixerActions'
 
 const store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store)

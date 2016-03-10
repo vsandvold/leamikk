@@ -1,8 +1,38 @@
+/*
+What it does:
+- Creates an audio context
+*/
+
+import {
+  CREATE_AUDIO_CONTEXT
+} from '../../constants/ActionTypes'
+
+function createAudioContext(audioCtx) {
+  return {
+    type: CREATE_AUDIO_CONTEXT,
+    audioCtx: audioCtx
+  }
+}
+
+export function getAudioContext() {
+  return (dispatch, getState) => {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    audioCtx.suspend();
+    dispatch(createAudioContext(audioCtx))
+  }
+}
+
+/*
+What it does:
+- Connects/disconnects microphone to/from audio context
+*/
+
 import {
   CONNECT_MICROPHONE_REQUEST,
   CONNECT_MICROPHONE_SUCCESS,
-  CONNECT_MICROPHONE_FAILURE
-} from '../constants/ActionTypes'
+  CONNECT_MICROPHONE_FAILURE,
+  DISCONNECT_MICROPHONE
+} from '../../constants/ActionTypes'
 
 var promisifiedOldGUM = function(constraints, successCallback, errorCallback) {
 
@@ -56,19 +86,31 @@ function connectMicrophoneFailure(error) {
   }
 }
 
-export function connectMicrophone() {
-  return (dispatch, getState) => {
-    const audioCtx = getState().audioCtx.ctx
+function disconnectMicrophone() {
+  return {
+    type: DISCONNECT_MICROPHONE
+  }
+}
 
-    dispatch(connectMicrophoneRequest())
-    navigator.mediaDevices.getUserMedia({ audio: true })
-    .then(stream => {
-      const source = audioCtx.createMediaStreamSource(stream)
-      source.connect(audioCtx.destination)
-      dispatch(connectMicrophoneSuccess(source))
-    })
-    .catch(error => {
-      dispatch(connectMicrophoneFailure(error.name + ": " + error.message))
-    })
+export function toggleMicrophone() {
+  return (dispatch, getState) => {
+    const isConnected = getState().mixer.microphone.isConnected
+    if (isConnected) {
+      getState().mixer.microphone.audioSource.disconnect()
+      dispatch(disconnectMicrophone())
+    } else {
+      const audioCtx = getState().mixer.audioCtx
+      dispatch(connectMicrophoneRequest())
+
+      navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(stream => {
+        const source = audioCtx.createMediaStreamSource(stream)
+        source.connect(audioCtx.destination)
+        dispatch(connectMicrophoneSuccess(source))
+      })
+      .catch(error => {
+        dispatch(connectMicrophoneFailure(error.name + ": " + error.message))
+      })
+    }
   }
 }
