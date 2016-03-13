@@ -5,9 +5,7 @@ What it does:
 import {
   PAUSE_PLAYBACK,
   RESUME_PLAYBACK
-} from '../../constants/ActionTypes'
-
-import { getAudioCtx } from '../Mixer/MixerReducers'
+} from '../../actions'
 
 function pausePlayback() {
   return {
@@ -22,16 +20,14 @@ function resumePlayback() {
 }
 
 export function togglePlayback() {
-  return (dispatch, getState) => {
+  return (dispatch, getState, { AudioService }) => {
     const isPlaying = getState().transport.isPlaying
     if (isPlaying) {
-      console.log('play -> pause')
-      getAudioCtx(getState()).suspend()
-      dispatch(pausePlayback())
+      AudioService.suspendPlayback()
+        .then(dispatch(pausePlayback()))
     } else {
-      console.log('pause -> resume')
-      getAudioCtx(getState()).resume()
-      dispatch(resumePlayback())
+      AudioService.resumePlayback()
+        .then(dispatch(resumePlayback()))
     }
   }
 }

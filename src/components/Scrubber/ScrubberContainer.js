@@ -6,14 +6,14 @@ import Scrubber from "./Scrubber"
 const mapStateToProps = (state, ownProps) => {
   return {
     currentTime: state.scrubber.currentTime,
-    totalTime: state.scrubber.totalTime
+    totalDuration: state.scrubber.totalDuration
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    handleScrubberChange: (offset) => {
-      dispatch(setPlaybackPosition(offset))
+    handleScrubberChange: (event) => {
+      dispatch(setPlaybackPosition(event.target.value))
     }
   }
 }

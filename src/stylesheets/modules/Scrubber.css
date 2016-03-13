@@ -1,0 +1,11 @@
+.scrubber {
+  display: flex;
+}
+
+.scrubber__output {
+
+}
+
+.scrubber__slider {
+  flex: 1;
+}

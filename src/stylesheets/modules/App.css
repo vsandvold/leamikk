@@ -1,0 +1,31 @@
+.app-container {
+  height: calc(100% - 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container__tracker {
+  flex-grow: 1;
+}
+
+.app-container__toolbar {}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #EEE;
+}
+
+.toolbar__transport {
+  margin: 20px 10px 20px 20px;
+}
+
+.toolbar__scrubber {
+  flex-grow: 1;
+  margin: 20px 10px;
+}
+
+.toolbar__mixer {
+  margin: 20px 20px 20px 10px;
+}

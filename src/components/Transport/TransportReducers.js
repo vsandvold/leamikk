@@ -1,7 +1,7 @@
 import {
   PAUSE_PLAYBACK,
   RESUME_PLAYBACK
-} from '../../constants/ActionTypes'
+} from '../../actions'
 
 const initialState = {
   isPlaying: false
@@ -10,13 +10,15 @@ const initialState = {
 function transport(state = initialState, action) {
   switch (action.type) {
     case PAUSE_PLAYBACK:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isPlaying: false
-      })
+      }
     case RESUME_PLAYBACK:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isPlaying: true
-      })
+      }
     default:
       return state
   }

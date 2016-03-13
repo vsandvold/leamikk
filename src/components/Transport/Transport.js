@@ -4,7 +4,7 @@ const Transport = ({ isPlaying, handlePlayPauseClick }) => {
   const transportIcon = isPlaying ? 'pause' : 'play_arrow'
 
   return (
-    <div className=''>
+    <div>
       <button onClick={handlePlayPauseClick}
         className='mdl-button mdl-js-button mdl-button--icon'>
         <i className='material-icons'>{transportIcon}</i>

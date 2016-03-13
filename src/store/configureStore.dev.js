@@ -1,15 +1,20 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import rootReducer from '../reducers'
 import DevTools from '../containers/DevTools'
+import thunkInject from '../middleware/thunkInject'
+
+import * as AudioService from '../api/audio/AudioService'
 
 export default function configureStore(initialState) {
   const store = createStore(
     rootReducer,
     initialState,
     compose(
-      applyMiddleware(thunk, createLogger()),
+      applyMiddleware(
+        thunkInject({AudioService}),
+        createLogger()
+      ),
       DevTools.instrument()
     )
   )

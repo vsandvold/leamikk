@@ -6,7 +6,7 @@ What it does:
 */
 import {
   SEEK_PLAYBACK_START
-} from '../../constants/ActionTypes'
+} from '../../actions'
 
 function seekPlaybackStart(offset) {
   return {
@@ -17,7 +17,6 @@ function seekPlaybackStart(offset) {
 
 export function setPlaybackPosition(offset) {
   return (dispatch, getState) => {
-    console.log('inside setPlaybackPosition')
     dispatch(seekPlaybackStart(offset))
   }
 }

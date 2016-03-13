@@ -4,6 +4,7 @@
   "description": "Layered audio mixer",
   "scripts": {
     "start": "node server.js",
+    "watch": "webpack-dev-server --inline --hot",
     "test": "mocha --compilers js:babel-register --recursive --require ./test/setup.js",
     "test:watch": "npm test -- --watch"
   },
@@ -26,16 +27,19 @@
     "react-router-redux": "^4.0.0-rc.1",
     "redux": "^3.2.1",
     "redux-logger": "^2.4.0",
-    "redux-thunk": "^1.0.3"
+    "redux-thunk": "^2.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.3.15",
     "babel-loader": "^6.2.0",
+    "babel-plugin-transform-object-rest-spread": "^6.6.5",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.1",
     "babel-register": "^6.5.2",
+    "css-loader": "^0.23.1",
     "express": "^4.13.3",
+    "extract-text-webpack-plugin": "^1.0.1",
     "js-dom": "0.0.1",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^0.14.7",
@@ -43,8 +47,10 @@
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.3",
     "redux-mock-store": "0.0.6",
+    "style-loader": "^0.13.0",
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",
+    "webpack-dev-server": "^1.14.1",
     "webpack-hot-middleware": "^2.2.0"
   }
 }

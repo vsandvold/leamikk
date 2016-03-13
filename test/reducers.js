@@ -1,6 +1,6 @@
 import expect from 'expect'
 import { errorMessage as reducer } from '../src/reducers'
-import * as types from '../src/constants/ActionTypes'
+import * as types from '../src/actions'
 
 describe('reducers', () => {
 
