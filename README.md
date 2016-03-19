@@ -1,2 +1,2 @@
-# Leamikk
+# Mawimbi
 Layered audio mixer
