@@ -2,10 +2,10 @@ import React, { PropTypes } from 'react'
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 
-import TrackerContainer from '../components/Tracker/TrackerContainer'
-import TransportContainer from '../components/Transport/TransportContainer'
-import ScrubberContainer from '../components/Scrubber/ScrubberContainer'
-import MixerContainer from '../components/Mixer/MixerContainer'
+import TrackerContainer from '../components/tracker/TrackerContainer'
+import TransportContainer from '../components/transport/TransportContainer'
+import ScrubberContainer from '../components/scrubber/ScrubberContainer'
+import MixerContainer from '../components/mixer/MixerContainer'
 import Snackbar from '../components/snackbar/Snackbar'
 
 class App extends React.Component {
