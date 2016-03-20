@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import createLogger from 'redux-logger'
 import rootReducer from '../reducers'
 import DevTools from '../containers/DevTools'
-import thunkInject from '../middleware/thunkInject'
+import thunkInject from '../middlewares/thunkInject'
 
 import * as AudioService from '../api/audio/AudioService'
 

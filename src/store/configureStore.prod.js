@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from '../reducers'
-import thunkInject from '../middleware/thunkInject'
+import thunkInject from '../middlewares/thunkInject'
 
 import * as AudioService from '../api/audio/AudioService'
 
